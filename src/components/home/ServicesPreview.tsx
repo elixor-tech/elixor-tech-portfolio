@@ -47,7 +47,7 @@ export default function ServicesPreview() {
     <section className="section" style={{ background: "var(--bg-deep)" }}>
       <div className="container">
         {/* Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "64px" }}>
+        <div className="section-header-flex">
           <div>
             <div className="section-label">What We Do</div>
             <h2 className="display-lg" style={{ maxWidth: "400px" }}>

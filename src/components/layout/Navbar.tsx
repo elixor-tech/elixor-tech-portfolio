@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -40,14 +40,14 @@ export default function Navbar() {
         <div className="navbar-inner">
           {/* Logo */}
           <Link href="/" className="navbar-logo" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <Image src="/logo.png" alt="Elixor Tech Logo" width={52} height={52} priority style={{ objectFit: "contain" }} />
+            <Image src="/Elixor_logo_light.png" alt="Elixor Tech Logo" width={64} height={64} priority style={{ objectFit: "contain" }} />
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <div className="navbar-logo-text" style={{ fontSize: "1.25rem", lineHeight: "1.1", letterSpacing: "0.06em" }}>
+              <div className="navbar-logo-text" style={{ fontSize: "1.35rem", lineHeight: "1.1", letterSpacing: "0.06em" }}>
                 ELIXOR <span style={{ color: "var(--blue-light)" }}>TECH</span>
               </div>
               <div style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "0.55rem",
+                fontSize: "0.58rem",
                 fontWeight: 650,
                 letterSpacing: "0.14em",
                 color: "rgba(226, 235, 240, 0.5)",
@@ -75,8 +75,8 @@ export default function Navbar() {
 
           {/* CTA */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <Link href="/contact" className="nav-cta" style={{ display: "block" }}>
-              Get Started
+            <Link href="/contact" className="nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              GET STARTED <ArrowRight size={14} />
             </Link>
             <button
               className="hamburger"

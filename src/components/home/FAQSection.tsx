@@ -29,7 +29,7 @@ const faqs = [
 function FAQItem({ question, answer, isOpen, toggleOpen }: { question: string; answer: string; isOpen: boolean; toggleOpen: () => void }) {
   return (
     <div
-      className="glass-card"
+      className="glass-card light-card"
       style={{
         marginBottom: "16px",
         overflow: "hidden",
@@ -39,23 +39,17 @@ function FAQItem({ question, answer, isOpen, toggleOpen }: { question: string; a
     >
       <button
         onClick={toggleOpen}
-        style={{
-          width: "100%",
-          padding: "24px 28px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          textAlign: "left",
-          gap: "16px",
-        }}
+        className="faq-btn"
       >
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "0.98rem",
-          fontWeight: 600,
-          color: isOpen ? "var(--blue-light)" : "var(--white-soft)",
-          transition: "color 0.3s",
-        }}>
+        <span 
+          className={`faq-question${isOpen ? " faq-question-active" : ""}`}
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.98rem",
+            fontWeight: 600,
+            transition: "color 0.3s",
+          }}
+        >
           {question}
         </span>
         <motion.div
@@ -75,14 +69,7 @@ function FAQItem({ question, answer, isOpen, toggleOpen }: { question: string; a
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
           >
-            <div style={{
-              padding: "0 28px 28px",
-              fontSize: "0.92rem",
-              color: "var(--white-dim)",
-              lineHeight: 1.7,
-              borderTop: "1px solid rgba(0, 107, 255, 0.1)",
-              paddingTop: "16px",
-            }}>
+            <div className="faq-content">
               {answer}
             </div>
           </motion.div>
@@ -96,7 +83,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="section" style={{ background: "var(--bg-deep)" }}>
+    <section className="section section-light">
       <div className="container" style={{ maxWidth: "800px" }}>
         {/* Section Header */}
         <div style={{ textAlign: "center", marginBottom: "56px" }}>
@@ -104,7 +91,7 @@ export default function FAQSection() {
           <h2 className="display-md">
             Frequently Asked <span className="text-gradient">Questions</span>
           </h2>
-          <p style={{ color: "var(--white-dim)", marginTop: "16px", fontSize: "0.95rem" }}>
+          <p style={{ marginTop: "16px", fontSize: "0.95rem" }}>
             Got questions? We have compiled responses to common inquiries regarding our engineering workflow.
           </p>
         </div>

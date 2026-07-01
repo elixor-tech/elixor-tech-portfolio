@@ -50,11 +50,15 @@
   --container-max: 1280px;
   --container-pad: 24px;
 
+  /* Responsive Hero Sizing */
+  --hero-visual-size: 420px;
+  --hero-logo-size: 160px;
+
   /* Borders */
   --border-glass: 1px solid rgba(0, 107, 255, 0.25);
   --border-glass-hover: 1px solid rgba(0, 107, 255, 0.55);
   --radius-card: 16px;
-  --radius-btn: 8px;
+  --radius-btn: 100px;
 }
 
 /* ============================================================
@@ -418,7 +422,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 10px 24px;
-  border-radius: 6px;
+  border-radius: 100px;
   background: var(--blue-core);
   color: #fff;
   transition: all 0.3s;
@@ -449,7 +453,7 @@ h1, h2, h3, h4 {
    HERO
    ============================================================ */
 .hero {
-  min-height: 100vh;
+  min-height: 82vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -1030,6 +1034,120 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
+   RESPONSIVE UTILITIES & HELPER CLASSES
+   ============================================================ */
+
+/* Glass Card Padded */
+.glass-card-padded {
+  padding: 48px;
+}
+
+/* Hero Grid Layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Hero Visual SVG Sizing */
+.hero-visual-container {
+  position: relative;
+  width: var(--hero-visual-size);
+  height: var(--hero-visual-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-visual-container svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Header Flex Layout */
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+
+/* Responsive Grid 360 */
+.responsive-grid-360 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+/* Form Row (Columns) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* CTA Card Spacing */
+.cta-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 80px 64px;
+  background: linear-gradient(135deg, rgba(0,104,255,0.15) 0%, rgba(122,0,255,0.15) 100%);
+  border: 1px solid rgba(0,104,255,0.25);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Services Page Card Layout */
+.service-horizontal {
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Process Grid Layout */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* FAQ Item triggers & details */
+.faq-btn {
+  width: 100%;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: 16px;
+}
+.faq-content {
+  padding: 0 28px 28px;
+  font-size: 0.92rem;
+  color: var(--white-dim);
+  line-height: 1.7;
+  border-top: 1px solid rgba(0, 107, 255, 0.1);
+  padding-top: 16px;
+}
+
+/* About Mission & Vision Card */
+.about-mission-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,104,255,0.1) 0%, rgba(122,0,255,0.1) 100%);
+  border: 1px solid rgba(0,104,255,0.2);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1200px) {
@@ -1037,17 +1155,33 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 1024px) {
+  :root {
+    --hero-visual-size: 340px;
+    --hero-logo-size: 130px;
+  }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr !important; }
-  .service-horizontal { grid-template-columns: 1fr !important; gap: 24px !important; }
-  .process-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .service-horizontal { 
+    grid-template-columns: 1fr !important; 
+    gap: 32px !important; 
+    padding: 32px 24px !important;
+  }
+  .process-grid { 
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 32px 20px !important;
+  }
+  .cta-card {
+    padding: 60px 40px !important;
+  }
 }
 
 @media (max-width: 768px) {
   :root {
     --section-padding: 80px 0;
     --container-pad: 20px;
+    --hero-visual-size: 300px;
+    --hero-logo-size: 110px;
   }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
@@ -1056,17 +1190,355 @@ h1, h2, h3, h4 {
   .hamburger { display: flex; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { padding: 24px 16px; }
   .process-step-connector { display: none; }
-  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 48px !important;
+    text-align: center;
+  }
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
   .contact-grid { grid-template-columns: 1fr !important; }
   .footer-grid { grid-template-columns: 1fr !important; }
-  .process-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .process-grid { 
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 28px 16px !important;
+  }
   .nav-cta { display: none; }
+  .glass-card-padded {
+    padding: 24px !important;
+  }
+  .about-mission-card {
+    padding: 30px !important;
+  }
+  .faq-btn {
+    padding: 20px 24px !important;
+  }
+  .faq-content {
+    padding: 0 24px 24px !important;
+    padding-top: 16px !important;
+  }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --hero-visual-size: 280px;
+    --hero-logo-size: 100px;
+  }
   .grid-4 { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .btn { justify-content: center; }
-  .process-grid { grid-template-columns: 1fr !important; }
+  .process-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 24px !important;
+  }
+  .cta-card {
+    padding: 40px 20px !important;
+  }
+  .glass-card-padded {
+    padding: 20px !important;
+  }
+  .about-mission-card {
+    padding: 20px !important;
+  }
+  .faq-btn {
+    padding: 16px 20px !important;
+  }
+  .faq-content {
+    padding: 0 20px 20px !important;
+    padding-top: 12px !important;
+  }
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
 }
+
+/* Bobbing animation for floating logo */
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.bobbing {
+  animation: bob 4s ease-in-out infinite;
+}
+
+/* Orbit rotation */
+@keyframes rotate-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rotate-counter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+.rotate-cw {
+  animation: rotate-clockwise 20s linear infinite;
+}
+.rotate-ccw {
+  animation: rotate-counter 25s linear infinite;
+}
+
+/* ============================================================
+   FEATURES BAR
+   ============================================================ */
+.features-bar-section {
+  background: #FFFFFF;
+  padding: 60px 0;
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.features-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1024px) {
+  .features-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .features-bar-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.feature-bar-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 107, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 107, 255, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-bar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 107, 255, 0.08);
+  border-color: rgba(0, 107, 255, 0.2);
+}
+
+.feature-bar-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 107, 255, 0.06);
+  border: 1px solid rgba(0, 107, 255, 0.15);
+  color: var(--blue-core);
+  flex-shrink: 0;
+}
+
+.feature-bar-content h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #020813;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.feature-bar-content p {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .feature-bar-card {
+    padding: 16px;
+    gap: 12px;
+  }
+}
+
+/* ============================================================
+   LIGHT THEME STYLING OVERRIDES (ALTERNATING SYSTEM)
+   ============================================================ */
+
+.section-light {
+  background-color: #FFFFFF !important;
+  color: #020813 !important;
+}
+
+.section-light .section-label {
+  color: var(--blue-core) !important;
+}
+
+.section-light .section-label::before {
+  background: var(--blue-core) !important;
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4 {
+  color: #020813 !important;
+}
+
+.section-light p,
+.section-light .body-lg,
+.section-light .body-sm {
+  color: #475569 !important;
+}
+
+/* Light Card Styling */
+.light-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 107, 255, 0.1) !important;
+  color: #020813 !important;
+  box-shadow: 0 4px 20px rgba(0, 107, 255, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.light-card:hover {
+  border-color: rgba(0, 107, 255, 0.35) !important;
+  box-shadow: 0 12px 36px rgba(0, 107, 255, 0.08) !important;
+  background: #FFFFFF !important;
+  transform: translateY(-4px);
+}
+
+.light-card h1,
+.light-card h2,
+.light-card h3,
+.light-card h4 {
+  color: #020813 !important;
+}
+
+.light-card p {
+  color: #475569 !important;
+}
+
+/* Light Stats Bar Overrides */
+.stats-bar-light {
+  background: rgba(0, 107, 255, 0.06) !important;
+  border-top: 1px solid rgba(0, 107, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(0, 107, 255, 0.1) !important;
+}
+
+.stats-bar-light .stat-item {
+  background: #FFFFFF !important;
+  color: #020813 !important;
+}
+
+.stats-bar-light .stat-item:hover {
+  background: rgba(0, 107, 255, 0.02) !important;
+}
+
+.stats-bar-light .stat-label {
+  color: #64748B !important;
+}
+
+/* Accordion Spans in Light Sections */
+.section-light .faq-question {
+  color: #020813 !important;
+}
+
+.section-light .faq-question-active {
+  color: var(--blue-core) !important;
+}
+
+.section-light .faq-content {
+  color: #475569 !important;
+}
+
+.section-light .icon-box {
+  background: rgba(0, 107, 255, 0.07) !important;
+  border-color: rgba(0, 107, 255, 0.18) !important;
+  color: var(--blue-core) !important;
+}
+
+.section-light .tag {
+  background: rgba(0, 107, 255, 0.08) !important;
+  border-color: rgba(0, 107, 255, 0.15) !important;
+  color: var(--blue-core) !important;
+}
+
+/* Social links in Light Sections */
+.section-light .contact-info-item {
+  background: rgba(0, 107, 255, 0.04) !important;
+  border: 1px solid rgba(0, 107, 255, 0.08) !important;
+}
+
+.section-light .contact-info-item:hover {
+  background: rgba(0, 107, 255, 0.08) !important;
+  border-color: rgba(0, 107, 255, 0.2) !important;
+}
+
+.section-light .contact-info-value {
+  color: #020813 !important;
+}
+
+.section-light .contact-info-label {
+  color: var(--blue-core) !important;
+}
+
+.section-light .contact-info-item p {
+  color: #64748B !important;
+}
+
+/* Light Form Inputs */
+.section-light .form-input,
+.section-light .form-textarea {
+  background: #F8FAFC !important;
+  border: 1px solid rgba(0, 107, 255, 0.12) !important;
+  color: #020813 !important;
+  backdrop-filter: none !important;
+}
+
+.section-light .form-input:focus,
+.section-light .form-textarea:focus {
+  border-color: var(--blue-core) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(0, 107, 255, 0.08) !important;
+}
+
+.section-light .form-input::placeholder,
+.section-light .form-textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+.section-light .form-label {
+  color: #475569 !important;
+}
+
+/* Service Features & Roles in Light Mode */
+.section-light .service-feature {
+  color: #475569 !important;
+}
+
+.section-light .testimonial-role {
+  color: var(--blue-core) !important;
+}
+
+.section-light .team-card-role {
+  color: var(--blue-core) !important;
+}
+
+.section-light .filter-tab {
+  border-color: rgba(0, 107, 255, 0.15) !important;
+  color: #64748B !important;
+}
+
+.section-light .filter-tab:hover,
+.section-light .filter-tab.active {
+  color: #FFFFFF !important;
+  background: var(--grad-primary) !important;
+  border-color: transparent !important;
+}
+
+

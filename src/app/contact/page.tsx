@@ -145,7 +145,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="section" style={{ background: "var(--bg-deep)", paddingTop: "60px" }}>
+      <section className="section section-light" style={{ paddingTop: "60px" }}>
         <div className="container">
           <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: "60px", alignItems: "flex-start" }}>
 
@@ -156,7 +156,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <div className="glass-card" style={{ padding: "48px" }}>
+              <div className="glass-card glass-card-padded light-card">
                 <div style={{ marginBottom: "36px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
                     <MessageSquare size={20} color="var(--blue-core)" />
@@ -196,7 +196,7 @@ export default function ContactPage() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                    <div className="form-row">
                       <motion.div className="form-group" custom={0} variants={fieldVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                         <label className="form-label" htmlFor="name">Full Name *</label>
                         <input
@@ -247,7 +247,7 @@ export default function ContactPage() {
                       >
                         <option value="" disabled>Select a service...</option>
                         {services.map((s) => (
-                          <option key={s} value={s} style={{ background: "var(--bg-card)", color: "var(--white-soft)" }}>
+                          <option key={s} value={s}>
                             {s}
                           </option>
                         ))}

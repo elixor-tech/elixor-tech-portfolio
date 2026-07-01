@@ -86,19 +86,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="section" style={{ background: "var(--bg-deep)" }}>
+      <section className="section section-light">
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "32px" }}>
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
-                className="glass-card service-horizontal"
+                className="glass-card service-horizontal light-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.08, duration: 0.6 }}
                 whileHover={{ scale: 1.01 }}
-                style={{ padding: "48px", display: "grid", gridTemplateColumns: "1fr 2fr 1.5fr", gap: "48px", alignItems: "center" }}
               >
                 {/* Left: Number + Icon */}
                 <div style={{ textAlign: "center" }}>
@@ -126,7 +125,7 @@ export default function ServicesPage() {
                 {/* Right: Features */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                   {service.features.map((feat) => (
-                    <div key={feat} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem", color: "var(--white-dim)" }}>
+                    <div key={feat} className="service-feature" style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "0.9rem" }}>
                       <CheckCircle2 size={16} color="var(--blue-core)" style={{ flexShrink: 0 }} />
                       {feat}
                     </div>
@@ -156,7 +155,7 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "0", position: "relative" }}>
+          <div className="process-grid">
             {process.map((step, i) => (
               <motion.div
                 key={step.step}

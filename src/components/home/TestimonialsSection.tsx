@@ -61,7 +61,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="section" id="testimonials">
+    <section className="section section-light" id="testimonials">
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -75,17 +75,17 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: "32px" }}>
+        <div className="responsive-grid-360">
           {testimonials.map((test, i) => (
             <motion.div
               key={test.id}
-              className="glass-card"
+              className="glass-card glass-card-padded light-card"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.6 }}
               whileHover={{ y: -8 }}
-              style={{ padding: "40px", position: "relative" }}
+              style={{ position: "relative" }}
             >
               {/* Quote Icon Background Decorator */}
               <div style={{ position: "absolute", top: "28px", right: "28px", opacity: 0.08, color: "var(--blue-light)" }}>
@@ -121,11 +121,11 @@ export default function TestimonialsSection() {
                   {test.initials}
                 </div>
                 <div>
-                  <h4 style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--white-soft)" }}>
+                  <h4 style={{ fontSize: "0.95rem", fontWeight: 700 }}>
                     {test.name}
                   </h4>
-                  <p style={{ fontSize: "0.8rem", color: "var(--blue-light)" }}>
-                    {test.role}, <span style={{ color: "var(--white-dim)" }}>{test.company}</span>
+                  <p style={{ fontSize: "0.8rem" }}>
+                    <span className="testimonial-role">{test.role}</span>, <span style={{ color: "#64748B" }}>{test.company}</span>
                   </p>
                 </div>
               </div>

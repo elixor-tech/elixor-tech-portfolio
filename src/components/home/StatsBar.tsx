@@ -42,7 +42,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 
 export default function StatsBar() {
   return (
-    <div className="stats-bar">
+    <div className="stats-bar stats-bar-light">
       {stats.map((stat, i) => (
         <motion.div
           key={stat.label}

@@ -113,7 +113,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Filter + Grid */}
-      <section className="section" style={{ background: "var(--bg-deep)" }}>
+      <section className="section section-light">
         <div className="container">
           {/* Filter Tabs */}
           <motion.div
@@ -139,9 +139,8 @@ export default function ProductsPage() {
           <LayoutGroup>
             <motion.div
               layout
+              className="responsive-grid-360"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
                 gap: "28px",
               }}
             >
@@ -155,7 +154,7 @@ export default function ProductsPage() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -6 }}
-                    className="glass-card"
+                    className="glass-card light-card"
                     style={{ overflow: "hidden" }}
                   >
                     {/* Project Visual */}
@@ -197,13 +196,13 @@ export default function ProductsPage() {
                           right: "16px",
                           padding: "4px 12px",
                           borderRadius: "100px",
-                          background: "rgba(0,0,0,0.4)",
-                          border: "1px solid rgba(255,255,255,0.2)",
+                          background: "rgba(0, 107, 255, 0.2)",
+                          border: "1px solid rgba(0, 230, 255, 0.35)",
                           fontSize: "0.7rem",
                           fontFamily: "var(--font-display)",
                           fontWeight: 600,
                           letterSpacing: "0.1em",
-                          color: "#fff",
+                          color: "#00E6FF",
                           backdropFilter: "blur(8px)",
                         }}>
                           FEATURED
@@ -214,7 +213,7 @@ export default function ProductsPage() {
                         top: "16px",
                         left: "16px",
                       }}>
-                        <span className="tag" style={{ background: "rgba(0,0,0,0.3)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }}>
+                        <span className="tag" style={{ background: "rgba(6, 12, 30, 0.65)", backdropFilter: "blur(8px)", border: "1px solid rgba(0, 230, 255, 0.2)", color: "#fff" }}>
                           {project.category}
                         </span>
                       </div>
@@ -236,49 +235,6 @@ export default function ProductsPage() {
                         ))}
                       </div>
 
-                      {/* Actions */}
-                      <div style={{ display: "flex", gap: "12px" }}>
-                        <button style={{
-                          display: "flex", alignItems: "center", gap: "6px",
-                          padding: "8px 16px", borderRadius: "6px",
-                          background: "rgba(0,104,255,0.1)", border: "1px solid rgba(0,104,255,0.2)",
-                          color: "var(--blue-light)", fontSize: "0.8rem",
-                          fontFamily: "var(--font-display)", fontWeight: 600,
-                          letterSpacing: "0.06em", cursor: "pointer",
-                          transition: "all 0.25s",
-                        }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.background = "rgba(0,104,255,0.2)";
-                            (e.currentTarget as HTMLElement).style.borderColor = "var(--blue-core)";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.background = "rgba(0,104,255,0.1)";
-                            (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,104,255,0.2)";
-                          }}
-                        >
-                          <ExternalLink size={13} /> View
-                        </button>
-                        <button style={{
-                          display: "flex", alignItems: "center", gap: "6px",
-                          padding: "8px 16px", borderRadius: "6px",
-                          background: "transparent", border: "1px solid rgba(226,235,253,0.1)",
-                          color: "var(--white-dim)", fontSize: "0.8rem",
-                          fontFamily: "var(--font-display)", fontWeight: 600,
-                          letterSpacing: "0.06em", cursor: "pointer",
-                          transition: "all 0.25s",
-                        }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.borderColor = "rgba(226,235,253,0.3)";
-                            (e.currentTarget as HTMLElement).style.color = "var(--white-soft)";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.borderColor = "rgba(226,235,253,0.1)";
-                            (e.currentTarget as HTMLElement).style.color = "var(--white-dim)";
-                          }}
-                        >
-                          <Github size={13} /> Code
-                        </button>
-                      </div>
                     </div>
                   </motion.div>
                 ))}

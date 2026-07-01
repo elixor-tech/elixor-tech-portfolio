@@ -12,15 +12,7 @@ export default function CTABlock() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{
-            position: "relative",
-            borderRadius: "24px",
-            padding: "80px 64px",
-            background: "linear-gradient(135deg, rgba(0,104,255,0.15) 0%, rgba(122,0,255,0.15) 100%)",
-            border: "1px solid rgba(0,104,255,0.25)",
-            textAlign: "center",
-            overflow: "hidden",
-          }}
+          className="cta-card"
         >
           {/* BG glow */}
           <div style={{

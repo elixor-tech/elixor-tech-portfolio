@@ -62,7 +62,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section" style={{ background: "var(--bg-deep)" }}>
+      <section className="section section-light">
         <div className="container">
           <div className="grid-2" style={{ alignItems: "center", gap: "80px" }}>
             {/* Visual */}
@@ -71,40 +71,30 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="about-mission-card light-card"
               style={{ position: "relative" }}
             >
-              <div style={{
-                borderRadius: "20px",
-                overflow: "hidden",
-                background: "linear-gradient(135deg, rgba(0,104,255,0.1) 0%, rgba(122,0,255,0.1) 100%)",
-                border: "1px solid rgba(0,104,255,0.2)",
-                padding: "60px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "32px",
-              }}>
-                {[
-                  { icon: Target, label: "MISSION", text: "To deliver world-class digital products that combine engineering precision with creative innovation." },
-                  { icon: Eye, label: "VISION", text: "To be the most trusted technology partner for businesses building the digital future." },
-                ].map(({ icon: Icon, label, text }) => (
-                  <div key={label} style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
-                    <div className="icon-box" style={{ flexShrink: 0 }}>
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <div style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "0.7rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        color: "var(--blue-light)",
-                        marginBottom: "8px",
-                      }}>{label}</div>
-                      <p style={{ fontSize: "0.95rem", color: "var(--white-dim)", lineHeight: 1.7 }}>{text}</p>
-                    </div>
+              {[
+                { icon: Target, label: "MISSION", text: "To deliver world-class digital products that combine engineering precision with creative innovation." },
+                { icon: Eye, label: "VISION", text: "To be the most trusted technology partner for businesses building the digital future." },
+              ].map(({ icon: Icon, label, text }) => (
+                <div key={label} style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
+                  <div className="icon-box" style={{ flexShrink: 0 }}>
+                    <Icon size={22} />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <div style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.18em",
+                      color: "var(--blue-light)",
+                      marginBottom: "8px",
+                    }}>{label}</div>
+                    <p style={{ fontSize: "0.95rem", color: "var(--white-dim)", lineHeight: 1.7 }}>{text}</p>
+                  </div>
+                </div>
+              ))}
               {/* Glow blob */}
               <div style={{
                 position: "absolute",
@@ -147,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="section">
+      <section className="section section-light">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -165,13 +155,13 @@ export default function AboutPage() {
             {values.map((val, i) => (
               <motion.div
                 key={val.title}
-                className="glass-card"
+                className="glass-card glass-card-padded light-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.12, duration: 0.6 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                style={{ padding: "36px 28px", textAlign: "center" }}
+                style={{ textAlign: "center" }}
               >
                 <motion.div
                   className="icon-box"
@@ -230,7 +220,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="section">
+      <section className="section section-light">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -248,7 +238,7 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
-                className="glass-card team-card"
+                className="glass-card team-card light-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

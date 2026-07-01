@@ -38,7 +38,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <Image src="/logo.png" alt="Elixor Tech" width={40} height={40} />
+              <Image src="/EX_logo.png" alt="Elixor Tech" width={40} height={40} />
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.08em" }}>
                 ELIXOR <span style={{ color: "var(--blue-core)" }}>TECH</span>
               </div>

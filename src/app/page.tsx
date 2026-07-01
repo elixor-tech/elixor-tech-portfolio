@@ -1,4 +1,5 @@
 import HeroSection from "@/components/home/HeroSection";
+import FeaturesBar from "@/components/home/FeaturesBar";
 import StatsBar from "@/components/home/StatsBar";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import TechMarquee from "@/components/home/TechMarquee";
@@ -16,6 +17,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <FeaturesBar />
       <StatsBar />
       <ServicesPreview />
       <TechMarquee />

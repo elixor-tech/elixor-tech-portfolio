@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, Rocket, Briefcase } from "lucide-react";
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -11,25 +11,20 @@ export default function HeroSection() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const words = ["WE", "ENGINEER", "DIGITAL", "EXCELLENCE"];
-  const accentWords = ["DIGITAL", "EXCELLENCE"];
-
   return (
-    <section className="hero" ref={ref}>
+    <section className="hero" ref={ref} style={{ paddingBottom: "70px" }}>
       <div className="grid-bg" />
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
       <div className="hero-orb hero-orb-3" />
 
-      {/* Animated grid dots */}
+      {/* Animated grid lines */}
       <GridAnimation />
 
       <motion.div className="container" style={{ y, opacity }}>
-        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div className="hero-grid">
           {/* Left: Content */}
           <div className="hero-content">
-
-
             <h1 className="hero-title" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <motion.span
                 initial={{ opacity: 0, y: 30 }}
@@ -66,11 +61,11 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <Link href="/services" className="btn btn-primary" style={{ padding: "14px 36px" }}>
-                Our Services
+              <Link href="/services" className="btn btn-primary" style={{ padding: "14px 36px", display: "inline-flex", alignItems: "center", gap: "10px" }}>
+                <Rocket size={16} /> OUR SERVICES <ArrowRight size={16} />
               </Link>
-              <Link href="/products" className="btn btn-outline" style={{ padding: "14px 36px" }}>
-                View Portfolio
+              <Link href="/products" className="btn btn-outline" style={{ padding: "14px 36px", display: "inline-flex", alignItems: "center", gap: "10px" }}>
+                <Briefcase size={16} /> VIEW PORTFOLIO <ArrowRight size={16} />
               </Link>
             </motion.div>
 
@@ -106,192 +101,125 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: 3D Visual */}
+          {/* Right: 3D Visual Redesign */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}
-          >
-            <div style={{
-              position: "relative",
-              width: "420px",
-              height: "420px",
+            style={{
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
-            }}>
-              {/* Isometric 3D Cybernetic Wireframe Cube Matrix */}
-              <motion.div
-                animate={{
-                  y: [-12, 12, -12],
-                  rotate: [0, 5, 0]
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+              alignItems: "center",
+              position: "relative",
+              width: "100%",
+              maxWidth: "440px",
+              margin: "0 auto",
+            }}
+          >
+            <div style={{ position: "relative", width: "100%", aspectRatio: "1/1" }}>
+              {/* Outer 3D space SVG: Pedestal, Orbits, and Dotted Globe */}
+              <svg
+                viewBox="0 0 440 440"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
                 style={{
-                  position: "absolute",
                   width: "100%",
                   height: "100%",
+                  filter: "drop-shadow(0 0 15px rgba(0, 107, 255, 0.12))",
+                }}
+              >
+                <defs>
+                  <linearGradient id="pedestalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#1e2c4a" />
+                    <stop offset="100%" stopColor="#080f21" />
+                  </linearGradient>
+                  <radialGradient id="spaceGlow" cx="50%" cy="40%" r="50%">
+                    <stop offset="0%" stopColor="rgba(0, 107, 255, 0.16)" />
+                    <stop offset="100%" stopColor="rgba(0, 4, 15, 0)" />
+                  </radialGradient>
+                  <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {/* Central spatial glow */}
+                <circle cx="220" cy="180" r="160" fill="url(#spaceGlow)" />
+
+                {/* 3D METALLIC PEDESTAL PLATFORM */}
+                <g>
+                  {/* Base Ring shadow */}
+                  <ellipse cx="220" cy="326" rx="116" ry="28" fill="rgba(0, 0, 0, 0.6)" />
+                  
+                  {/* Platform Base Cylindrical height */}
+                  <path d="M 104 316 L 104 330 A 116 26 0 0 0 336 330 L 336 316 Z" fill="url(#pedestalGrad)" stroke="rgba(0, 107, 255, 0.18)" strokeWidth="1.5" />
+                  
+                  {/* Bottom platform top ellipse rim */}
+                  <ellipse cx="220" cy="316" rx="116" ry="26" fill="#0d172e" stroke="rgba(0, 107, 255, 0.25)" strokeWidth="1.5" />
+                  
+                  {/* Pulsing Neon Light Loop */}
+                  <motion.ellipse
+                    cx="220"
+                    cy="313"
+                    rx="98"
+                    ry="21"
+                    stroke="var(--blue-light)"
+                    strokeWidth="2.5"
+                    fill="none"
+                    filter="url(#neonGlow)"
+                    animate={{ opacity: [0.5, 1, 0.5], scale: [0.98, 1.02, 0.98] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ transformOrigin: "220px 313px" }}
+                  />
+
+                  {/* Upper elevated cylinder step */}
+                  <path d="M 124 300 L 124 310 A 96 20 0 0 0 316 310 L 316 300 Z" fill="#060c1b" stroke="rgba(0, 230, 255, 0.15)" strokeWidth="1" />
+                  
+                  {/* Upper pedestal top surface */}
+                  <ellipse cx="220" cy="300" rx="96" ry="20" fill="#080e1e" stroke="rgba(0, 230, 255, 0.35)" strokeWidth="1.5" />
+                  <ellipse cx="220" cy="300" rx="84" ry="16" fill="#03060c" />
+                </g>
+              </svg>
+
+              {/* Floating brand logo above pedestal (percentage-scaled HTML Next Image - Static/Large) */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: "-20%",
+                  top: "-28%",
+                  width: "140%",
+                  height: "140%",
+                  zIndex: 10,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   pointerEvents: "none",
+                  filter: "drop-shadow(0 0 35px rgba(0, 107, 255, 0.7)) drop-shadow(0 0 70px rgba(0, 230, 255, 0.4))",
                 }}
               >
-                <svg
-                  width="440"
-                  height="440"
-                  viewBox="0 0 440 440"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    filter: "drop-shadow(0 0 25px rgba(0, 107, 255, 0.25))",
-                  }}
-                >
-                  <defs>
-                    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00E6FF" />
-                      <stop offset="50%" stopColor="#006BFF" />
-                      <stop offset="100%" stopColor="#7A00FF" />
-                    </linearGradient>
-                    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="rgba(0, 107, 255, 0.15)" />
-                      <stop offset="100%" stopColor="rgba(0, 4, 15, 0)" />
-                    </radialGradient>
-                  </defs>
-
-                  {/* Inner glow field */}
-                  <circle cx="220" cy="220" r="180" fill="url(#glowGrad)" />
-
-                  {/* Isometric grid overlay */}
-                  <g opacity="0.12">
-                    <line x1="40" y1="220" x2="400" y2="220" stroke="var(--blue-light)" strokeWidth="1" />
-                    <line x1="220" y1="40" x2="220" y2="400" stroke="var(--blue-light)" strokeWidth="1" />
-                    {/* Diagonal traces */}
-                    <path d="M 120 48 L 320 392 M 320 48 L 120 392" stroke="var(--blue-light)" strokeWidth="0.75" />
-                  </g>
-
-                  {/* Main Isometric Cube Faces */}
-                  <g stroke="url(#cyberGrad)" strokeWidth="1.75" opacity="0.8">
-                    {/* Top Face */}
-                    <path d="M 220 120 L 320 178 L 220 236 L 120 178 Z" />
-                    {/* Left Face */}
-                    <path d="M 120 178 L 220 236 L 220 348 L 120 290 Z" />
-                    {/* Right Face */}
-                    <path d="M 220 236 L 320 178 L 320 290 L 220 348 Z" />
-                  </g>
-
-                  {/* Inner nested cube */}
-                  <g stroke="url(#cyberGrad)" strokeWidth="1" opacity="0.5" strokeDasharray="3,3">
-                    <path d="M 220 155 L 280 190 L 220 225 L 160 190 Z" />
-                    <path d="M 160 190 L 220 225 L 220 295 L 160 260 Z" />
-                    <path d="M 220 225 L 280 190 L 280 260 L 220 295 Z" />
-                  </g>
-
-                  {/* Grid Node Points */}
-                  <g fill="var(--blue-light)">
-                    <circle cx="220" cy="120" r="4.5" />
-                    <circle cx="320" cy="178" r="4.5" />
-                    <circle cx="220" cy="236" r="4.5" />
-                    <circle cx="120" cy="178" r="4.5" />
-                    <circle cx="120" cy="290" r="4.5" />
-                    <circle cx="220" cy="348" r="4.5" />
-                    <circle cx="320" cy="290" r="4.5" />
-                  </g>
-
-                  {/* Orbital lines */}
-                  <motion.ellipse
-                    cx="220"
-                    cy="220"
-                    rx="190"
-                    ry="95"
-                    stroke="var(--purple-mid)"
-                    strokeWidth="1"
-                    opacity="0.3"
-                    style={{ transformOrigin: "220px 220px" }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                  />
-                  <motion.ellipse
-                    cx="220"
-                    cy="220"
-                    rx="150"
-                    ry="75"
-                    stroke="var(--blue-core)"
-                    strokeWidth="1"
-                    opacity="0.25"
-                    style={{ transformOrigin: "220px 220px" }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                  />
-                </svg>
-              </motion.div>
-
-              {/* Center logo glow */}
-              <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                style={{
-                  position: "relative",
-                  zIndex: 2,
-                  filter: "drop-shadow(0 0 30px rgba(0,104,255,0.6)) drop-shadow(0 0 60px rgba(122,0,255,0.3))",
-                }}
-              >
-                <Image src="/logo.png" alt="Elixor Tech" width={160} height={160} priority />
-              </motion.div>
-
-              {/* Orbiting dots */}
-              {[0, 60, 120, 180, 240, 300].map((deg, i) => {
-                const topOffset = (Math.sin((deg * Math.PI) / 180) * 145 - 4).toFixed(3);
-                const leftOffset = (Math.cos((deg * Math.PI) / 180) * 145 - 4).toFixed(3);
-                return (
-                  <motion.div
-                    key={i}
-                    style={{
-                      position: "absolute",
-                      width: "8px",
-                      height: "8px",
-                      borderRadius: "50%",
-                      background: i % 2 === 0 ? "var(--blue-core)" : "var(--purple-mid)",
-                      boxShadow: `0 0 12px ${i % 2 === 0 ? "var(--blue-core)" : "var(--purple-mid)"}`,
-                      top: `calc(50% + ${topOffset}px)`,
-                      left: `calc(50% + ${leftOffset}px)`,
-                    }}
-                    animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 2 + i * 0.3, repeat: Infinity, delay: i * 0.2 }}
-                  />
-                );
-              })}
+                <Image
+                  src="/EX_logo.png"
+                  alt="Elixor Tech EX Emblem Logo"
+                  width={480}
+                  height={480}
+                  priority
+                  style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                />
+              </div>
             </div>
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        style={{
-          position: "absolute",
-          bottom: "32px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "8px",
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
-        <span style={{ fontSize: "0.7rem", fontFamily: "var(--font-display)", letterSpacing: "0.15em", color: "var(--white-faint)" }}>SCROLL</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-          <ChevronDown size={18} color="var(--white-faint)" />
-        </motion.div>
-      </motion.div>
+      {/* Slanted Curved Divider sweeps up from left to right */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, width: "100%", height: "120px", overflow: "hidden", zIndex: 5, pointerEvents: "none" }}>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style={{ position: "relative", display: "block", width: "100%", height: "100%" }}>
+          <path d="M0,120 C480,125 960,85 1440,30 L1440,120 L0,120 Z" fill="#FFFFFF" />
+        </svg>
+      </div>
     </section>
   );
 }
@@ -306,7 +234,7 @@ function GridAnimation() {
             position: "absolute",
             width: "1px",
             height: "100%",
-            background: "linear-gradient(to bottom, transparent, rgba(0,104,255,0.1), transparent)",
+            background: "linear-gradient(to bottom, transparent, rgba(0,104,255,0.06), transparent)",
             left: `${(i + 1) * 8.33}%`,
           }}
           animate={{ opacity: [0, 0.6, 0] }}
