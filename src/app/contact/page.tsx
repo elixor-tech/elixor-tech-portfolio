@@ -52,57 +52,43 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const formSpreeId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
 
-    // Check if EmailJS keys are provided
-    const hasEmailJS = serviceId && serviceId !== "your_service_id" &&
-      templateId && templateId !== "your_template_id" &&
-      publicKey && publicKey !== "your_public_key";
+    // Check if Formspree Form ID is provided and is not a placeholder
+    const hasFormspree = formSpreeId && formSpreeId !== "your_formspree_id";
 
-    if (hasEmailJS) {
+    if (hasFormspree) {
       try {
-        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        const response = await fetch(`https://formspree.io/f/${formSpreeId}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
           body: JSON.stringify({
-            service_id: serviceId,
-            template_id: templateId,
-            user_id: publicKey,
-            template_params: {
-              name: formState.name,
-              email: formState.email,
-              from_name: formState.name,
-              from_email: formState.email,
-              company: formState.company || "Not Provided",
-              service: formState.service,
-              title: formState.service || "General Inquiry",
-              message: formState.message,
-              time: new Date().toLocaleString("en-US", {
-                dateStyle: "medium",
-                timeStyle: "short",
-              }),
-              to_email: "elixortechteam@gmail.com",
-            },
+            name: formState.name,
+            email: formState.email,
+            company: formState.company || "Not Provided",
+            service: formState.service || "General Inquiry",
+            message: formState.message,
           }),
         });
 
         if (response.ok) {
           setSent(true);
         } else {
-          const errorText = await response.text();
-          throw new Error(`EmailJS failed: ${errorText}`);
+          const errorData = await response.json();
+          throw new Error(errorData.error || `Formspree failed: ${response.statusText}`);
         }
       } catch (err) {
-        console.warn("EmailJS failed, falling back to mailto...", err);
+        console.warn("Formspree failed, falling back to mailto...", err);
         triggerMailtoFallback();
       } finally {
         setLoading(false);
       }
     } else {
       // Revert to mailto fallback if credentials are not configured in .env.local yet
-      console.log("EmailJS credentials not configured in .env.local. Triggering mailto client...");
+      console.log("Formspree Form ID not configured in .env.local. Triggering mailto client...");
       triggerMailtoFallback();
       setLoading(false);
     }
