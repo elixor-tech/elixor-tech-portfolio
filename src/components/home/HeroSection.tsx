@@ -153,13 +153,13 @@ export default function HeroSection() {
                 <g>
                   {/* Base Ring shadow */}
                   <ellipse cx="220" cy="326" rx="116" ry="28" fill="rgba(0, 0, 0, 0.6)" />
-                  
+
                   {/* Platform Base Cylindrical height */}
                   <path d="M 104 316 L 104 330 A 116 26 0 0 0 336 330 L 336 316 Z" fill="url(#pedestalGrad)" stroke="rgba(0, 107, 255, 0.18)" strokeWidth="1.5" />
-                  
+
                   {/* Bottom platform top ellipse rim */}
                   <ellipse cx="220" cy="316" rx="116" ry="26" fill="#0d172e" stroke="rgba(0, 107, 255, 0.25)" strokeWidth="1.5" />
-                  
+
                   {/* Pulsing Neon Light Loop */}
                   <motion.ellipse
                     cx="220"
@@ -177,7 +177,7 @@ export default function HeroSection() {
 
                   {/* Upper elevated cylinder step */}
                   <path d="M 124 300 L 124 310 A 96 20 0 0 0 316 310 L 316 300 Z" fill="#060c1b" stroke="rgba(0, 230, 255, 0.15)" strokeWidth="1" />
-                  
+
                   {/* Upper pedestal top surface */}
                   <ellipse cx="220" cy="300" rx="96" ry="20" fill="#080e1e" stroke="rgba(0, 230, 255, 0.35)" strokeWidth="1.5" />
                   <ellipse cx="220" cy="300" rx="84" ry="16" fill="#03060c" />
