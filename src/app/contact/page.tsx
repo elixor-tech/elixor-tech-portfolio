@@ -10,10 +10,11 @@ const contactInfo = [
     value: "elixortechteam@gmail.com",
     sub: "We reply within 24 hours",
   },
+
   {
     icon: Phone,
     label: "Call Us",
-    value: "+92 316 5466366",
+    value: "+92 3165466366",
     sub: "Mon–Fri, 9am–6pm",
   },
   {
@@ -57,8 +58,8 @@ export default function ContactPage() {
 
     // Check if EmailJS keys are provided
     const hasEmailJS = serviceId && serviceId !== "your_service_id" &&
-                       templateId && templateId !== "your_template_id" &&
-                       publicKey && publicKey !== "your_public_key";
+      templateId && templateId !== "your_template_id" &&
+      publicKey && publicKey !== "your_public_key";
 
     if (hasEmailJS) {
       try {
