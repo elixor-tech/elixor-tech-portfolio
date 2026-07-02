@@ -103,6 +103,7 @@ export default function HeroSection() {
 
           {/* Right: 3D Visual Redesign */}
           <motion.div
+            className="hero-visual-wrapper"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}

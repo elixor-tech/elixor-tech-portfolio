@@ -39,21 +39,13 @@ export default function Navbar() {
       >
         <div className="navbar-inner">
           {/* Logo */}
-          <Link href="/" className="navbar-logo" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <Image src="/Elixor_logo_light.png" alt="Elixor Tech Logo" width={64} height={64} priority style={{ objectFit: "contain" }} />
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <div className="navbar-logo-text" style={{ fontSize: "1.35rem", lineHeight: "1.1", letterSpacing: "0.06em" }}>
-                ELIXOR <span style={{ color: "var(--blue-light)" }}>TECH</span>
+          <Link href="/" className="navbar-logo">
+            <Image src="/Elixor_logo_light.png" alt="Elixor Tech Logo" width={56} height={56} priority className="navbar-logo-img" />
+            <div className="navbar-logo-info">
+              <div className="navbar-logo-text">
+                ELIXOR <span>TECH</span>
               </div>
-              <div style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "0.58rem",
-                fontWeight: 650,
-                letterSpacing: "0.14em",
-                color: "rgba(226, 235, 240, 0.5)",
-                textTransform: "uppercase",
-                lineHeight: "1.0",
-              }}>
+              <div className="navbar-logo-tagline">
                 engineered for excellence
               </div>
             </div>
@@ -74,8 +66,8 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <Link href="/contact" className="nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+          <div className="navbar-cta-group">
+            <Link href="/contact" className="nav-cta">
               GET STARTED <ArrowRight size={14} />
             </Link>
             <button
@@ -139,6 +131,23 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
+
+            {/* CTA inside mobile menu */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navItems.length * 0.08 }}
+              style={{ marginTop: "16px", padding: "0 16px" }}
+            >
+              <Link
+                href="/contact"
+                className="btn btn-primary"
+                style={{ width: "100%", justifyContent: "center", display: "inline-flex", alignItems: "center", gap: "8px" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                GET STARTED <ArrowRight size={14} />
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

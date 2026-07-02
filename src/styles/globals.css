@@ -369,16 +369,39 @@ h1, h2, h3, h4 {
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  flex-shrink: 0;
 }
-.navbar-logo img { height: 52px; width: auto; }
+.navbar-logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+.navbar-logo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 .navbar-logo-text {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
-.navbar-logo-text span { color: var(--blue-core); }
+.navbar-logo-text span {
+  color: var(--blue-light);
+}
+.navbar-logo-tagline {
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  color: rgba(226, 235, 240, 0.5);
+  text-transform: uppercase;
+  line-height: 1.0;
+}
 
 .nav-links {
   display: flex;
@@ -415,7 +438,16 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
+.navbar-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-display);
   font-size: 0.78rem;
   font-weight: 600;
@@ -1197,6 +1229,14 @@ h1, h2, h3, h4 {
     gap: 48px !important;
     text-align: center;
   }
+  .hero-visual-wrapper {
+    order: 1;
+    max-width: 320px !important;
+    margin-bottom: 24px;
+  }
+  .hero-content {
+    order: 2;
+  }
   .hero-desc {
     margin-left: auto;
     margin-right: auto;
@@ -1210,7 +1250,11 @@ h1, h2, h3, h4 {
     grid-template-columns: repeat(2, 1fr) !important; 
     gap: 28px 16px !important;
   }
-  .nav-cta { display: none; }
+  .nav-cta { display: none !important; }
+  .navbar-logo-tagline { display: none !important; }
+  .navbar-logo-img { height: 44px; }
+  .navbar-logo-text { font-size: 1.15rem; }
+  
   .glass-card-padded {
     padding: 24px !important;
   }
@@ -1231,6 +1275,9 @@ h1, h2, h3, h4 {
     --hero-visual-size: 280px;
     --hero-logo-size: 100px;
   }
+  .navbar-logo-img { height: 38px; }
+  .navbar-logo-text { font-size: 1.05rem; }
+  
   .grid-4 { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .btn { justify-content: center; }
